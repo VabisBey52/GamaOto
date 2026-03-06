@@ -41,12 +41,12 @@ Tünelleme,		Ngrok (Yerel testi dış dünyaya açmak için)
 Bu proje, fikir aşamasından yayına kadar aşağıdaki ekip tarafından kolektif bir ruhla geliştirilmiştir:
 
 ### 👑 Adahan Karadeniz - Kurucu & Baş Geliştirici (Full-Stack)
-<img src="https://github.com/VabisBey52.png" width="150px;" style="border-radius:50%;"/><br /><sub><b>Adahan Karadeniz</b></sub>]
+<img src="https://github.com/VabisBey52.png" width="150px;" style="border-radius:50%;"/><br /><sub></sub>
 
 Proje mimarisi, veritabanı tasarımı ve backend (C#) süreçlerinin yönetimi.
 
 ### 🛠️ Hüseyin Yüce - Proje Asistanı & Yazılım Geliştirici
-<img src="https://github.com/huseyin6060.png" width="150px;" style="border-radius:50%;"/><br /><sub><b>Hüseyin Yüce</b></sub>]
+<img src="https://github.com/huseyin6060.png" width="150px;" style="border-radius:50%;"/><br /><sub></sub>
 
 Sistem geliştirme süreçlerinde teknik destek ve modül entegrasyonları.
 
