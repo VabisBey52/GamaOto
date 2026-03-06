@@ -1,6 +1,7 @@
 ﻿using Projeweb.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -950,10 +951,15 @@ namespace Projeweb.Controllers
         {
             try
             {
-                var gondericiEmail = new MailAddress("karadenizadahan099@gmail.com", "OtoServis");
+                string gonderici = ConfigurationManager.AppSettings["EmailUser"];
+                string uygulamaSifresi = ConfigurationManager.AppSettings["EmailPassword"];
+
+                // Mail adreslerini tanımlıyoruz
+                var gondericiEmail = new MailAddress(gonderici, "OtoServis");
                 var aliciEmail = new MailAddress(aliciMail);
-                // Gmail "Uygulama Şifresi" kullanmanız gerekir
-                string sifre = "acnhomyyozoswbdo";
+
+                // Şifre değişkenini artık doğrudan ConfigurationManager'dan gelen değerle kullanıyoruz
+                string sifre = uygulamaSifresi;
 
                 var smtp = new SmtpClient
                 {
