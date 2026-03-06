@@ -1,0 +1,64 @@
+﻿@model Projeweb.Models.Tbl_Uyeler
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/tema/css/bootstrap.min.css" rel="stylesheet">
+    <title>GamaOto - Üye Girişi</title>
+    <style>
+        body {
+            background: #f4f7f6;
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .copyright-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <div class="card p-4 shadow-lg" style="width: 380px;">
+            <h3 class="text-center mb-4 text-primary">Üye Girişi</h3>
+
+            @using (Html.BeginForm("Girisyap", "Default", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">E-posta</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", required = "required", placeholder = "ornek@mail.com" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">Şifre</label>
+                    @Html.PasswordFor(x => x.Sifre, new { @class = "form-control", required = "required", placeholder = "••••••" })
+                </div>
+
+                if (ViewBag.Hata != null)
+                {
+                    <div class="alert alert-danger p-2 small">@ViewBag.Hata</div>
+                }
+
+                <button type="submit" class="btn btn-primary w-100 py-2 shadow-sm">Giriş Yap</button>
+
+                <div class="text-center mt-3">
+                    <a href="/Default/KayitOl" class="small text-decoration-none text-secondary">Hesabınız yok mu? <strong>Hemen Kayıt Olun</strong></a>
+                </div>
+
+                <hr class="mt-4">
+                <div class="text-center mt-3 copyright-text">
+                    &copy; @DateTime.Now.Year <strong>GamaOto Servis</strong>. <br>
+                    Tüm Hakları Saklıdır.
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

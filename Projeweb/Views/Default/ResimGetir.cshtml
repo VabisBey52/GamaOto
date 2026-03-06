@@ -1,0 +1,35 @@
+﻿@model Projeweb.Models.Tbl_Resimler
+@{
+    ViewBag.Title = "ResimGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Slider Güncelle</h6>
+        @using (Html.BeginForm("ResimGuncelle", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @* Veritabanındaki PK adın neyse (SliderID veya ResimID) onu kullan *@
+            @Html.HiddenFor(x => x.SliderID)
+
+            <div class="mb-3">
+                <label class="form-label">Üst Başlık</label>
+                @Html.TextBoxFor(x => x.UstBaslik, new { @class = "form-control" })
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ana Başlık</label>
+                @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mevcut Arka Plan: <img src="@Model.ArkaPlanResim" width="100" /></label>
+                <input type="file" name="ArkaPlan" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mevcut Ön Resim: <img src="@Model.OnResim" width="100" /></label>
+                <input type="file" name="OnResim" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Değişiklikleri Kaydet</button>
+            <a href="/Default/ResimlerEkle" class="btn btn-secondary">Vazgeç</a>
+        }
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model Projeweb.Models.Tbl_Duyurular
+
+@{
+    ViewBag.Title = "Duyuru Güncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4 shadow-sm">
+        <h4 class="mb-4">Duyuru Düzenle</h4>
+
+        @using (Html.BeginForm("DuyuruGuncelle", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.DuyuruID)
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Duyuru Başlığı</label>
+                @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Mevcut Görsel</label><br />
+                <img src="@Model.ResimYolu" style="width:150px; border-radius:8px;" class="mb-2 shadow-sm" />
+                <input type="file" name="ResimDosyasi" class="form-control" />
+                <small class="text-muted">Değiştirmek istemiyorsanız boş bırakın.</small>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Duyuru İçeriği</label>
+                @Html.TextAreaFor(x => x.DuyuruMetni, new { @class = "form-control", rows = "10" })
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success py-2 px-5">Değişiklikleri Kaydet</button>
+                <a href="/Default/DuyuruListesi" class="btn btn-secondary py-2 px-4">İptal</a>
+            </div>
+        }
+    </div>
+</div>

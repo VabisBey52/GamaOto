@@ -1,0 +1,45 @@
+﻿@model List<Projeweb.Models.Tbl_Yorumlar>
+@{
+    ViewBag.Title = "Tüm Müşteri Yorumları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase">// Müşteri Deneyimleri //</h6>
+            <h1 class="mb-4">Tüm Yorumlar</h1>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item text-center bg-light p-4 rounded shadow-sm h-100">
+                        <img class="bg-light rounded-circle p-2 mx-auto mb-3"
+                             src="@(item.Tbl_Uyeler != null ? item.Tbl_Uyeler.UyeResim : "/tema/img/uyeler/user-profile.png")"
+                             style="width: 80px; height: 80px; object-fit: cover;">
+
+                        <div class="mb-2">
+                            @for (int y = 1; y <= 5; y++)
+                            {
+                                double p = Convert.ToDouble(item.Puan ?? 0);
+                                if (y <= p)
+                                {<img src="/tema/img/icons8-star-full30.png" style="width:18px;" /> }
+                                else if (y - 0.5 <= p)
+                                { <img src="/tema/img/icons8-star-half-30.png" style="width:18px;" /> }
+                                else
+                                { <img src="/tema/img/icons8-star-empty30.png" style="width:18px;" />}
+                            }
+                        </div>
+
+                        <h5 class="mb-0">@item.MusteriAdSoyad</h5>
+                        <small class="text-muted">@item.YorumTarihi.Value.ToString("dd MMMM yyyy")</small>
+                        <hr>
+                        <p class="mb-0">@item.YorumMetni</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

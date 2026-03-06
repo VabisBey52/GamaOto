@@ -1,0 +1,38 @@
+﻿@model List<Projeweb.Models.Tbl_Hizmetler>
+@{
+    ViewBag.Title = "Tüm Hizmetlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-primary text-uppercase">// Servis Kataloğumuz //</h6>
+            <h1 class="mb-5">Size Sunduğumuz Tüm Hizmetler</h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item h-100 bg-light p-4 rounded shadow-sm text-center">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa @item.IkonClass text-primary fa-2x"></i>
+                        </div>
+                        <div class="mb-4 overflow-hidden rounded">
+                            <img class="img-fluid"
+                                 src="@Url.Content(string.IsNullOrEmpty(item.ResimYolu) ? "~/tema/img/service-1.jpg" : item.ResimYolu)"
+                                 alt="@item.Baslik"
+                                 style="width: 100%; height: 200px; object-fit: cover; transition: 0.5s;">
+                        </div>
+                        <h4 class="mb-3">@item.Baslik</h4>
+                        <p class="text-body mb-4">@item.Aciklama</p>
+
+                        <a class="btn btn-square rounded-circle" href="/Default/Index#Teklif-formu">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model List<Projeweb.Models.Tbl_Mesajlar>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="mb-0 text-start">Gelen İletişim Mesajları</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Gönderen</th>
+                        <th>Konu</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@item.AdSoyad</td>
+                            <td>@item.Konu</td>
+                            <td>
+                                @if (item.Okundu == true)
+                                {
+                                    <span class="badge bg-success">Okundu</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Yeni</span>
+                                }
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="/Default/MesajDetay/@item.MesajID">
+                                    <i class="fa fa-reply"></i> Oku ve Cevapla
+                                </a>
+                                <a class="btn btn-sm btn-danger" href="/Default/MesajSil/@item.MesajID"
+                                   onclick="return confirm('Bu mesajı silmek istediğinize emin misiniz?')">
+                                    <i class="fa fa-trash"></i> Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@model Projeweb.Models.Tbl_SSS
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded p-4">
+        <h4 class="mb-4">Soruyu Güncelle</h4>
+        <form method="post">
+            @Html.HiddenFor(x => x.ID)
+            <div class="mb-3">
+                <label>Soru</label>
+                @Html.TextBoxFor(x => x.Soru, new { @class = "form-control" })
+            </div>
+            <div class="mb-3">
+                <label>Cevap</label>
+                @Html.TextAreaFor(x => x.Cevap, new { @class = "form-control", rows = "5" })
+            </div>
+            <div class="mb-3">
+                <label>Sıra</label>
+                @Html.TextBoxFor(x => x.Sira, new { @class = "form-control", type = "number" })
+            </div>
+            <button type="submit" class="btn btn-warning">Değişiklikleri Kaydet</button>
+            <a href="/Default/IndexAdmin" class="btn btn-secondary">Geri Dön</a>
+        </form>
+    </div>
+</div>

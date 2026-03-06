@@ -1,0 +1,51 @@
+﻿@model List<Projeweb.Models.Randevular>
+@{
+    ViewBag.Title = "Randevularım";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-primary text-uppercase">// Randevu Takibi //</h6>
+            <h1 class="mb-5">Randevu Geçmişiniz</h1>
+        </div>
+
+        <div class="bg-light rounded p-5 shadow-sm">
+            <table class="table table-hover align-middle">
+                <thead class="text-primary border-bottom">
+                    <tr>
+                        <th>Hizmet</th>
+                        <th>Tarih</th>
+                        <th>Talep</th>
+                        <th class="text-center">Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><i class="fa fa-car me-2"></i>@item.HizmetTuru</td>
+                            <td>@item.RandevuTarihi.Value.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td><small>@item.OzelTalep</small></td>
+                            <td class="text-center">
+                                @if (item.Durum == "Onaylandı")
+                                {
+                                    <span class="badge bg-success rounded-pill px-3">Onaylandı</span>
+                                }
+                                else if (item.Durum == "Beklemede")
+                                {
+                                    <span class="badge bg-warning text-dark rounded-pill px-3">Beklemede</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger rounded-pill px-3">İptal</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

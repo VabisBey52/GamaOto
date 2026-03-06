@@ -1,0 +1,74 @@
+﻿@model Projeweb.Models.Tbl_Hizmetler
+@{
+    ViewBag.Title = "Hizmet Getir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-warning text-white">
+        <h6 class="m-0 font-weight-bold">Hizmet Düzenle: @Model.Baslik</h6>
+    </div>
+    <div class="card-body">
+        @* Resim güncelleme için enctype şart *@
+        <form method="post" action="/Default/HizmetGuncelle" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.HizmetID) 
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Hizmet Başlığı</label>
+                <input type="text" name="Baslik" class="form-control" value="@Model.Baslik" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Mevcut Resim</label><br />
+                <img src="@Model.ResimYolu" style="width:150px; border-radius:5px;" class="mb-2 border" />
+                <input type="file" name="ResimDosyasi" class="form-control" />
+                <small class="text-muted">Değiştirmek istemiyorsanız boş bırakın.</small>
+            </div>
+
+            @* İkon Seçici Panel *@
+            <div class="form-group mb-4">
+                <label class="font-weight-bold d-block">İkonu Güncelle</label>
+                <div class="row text-center p-2 bg-light border rounded mx-0" style="max-height: 200px; overflow-y: auto;">
+                    @{
+                        var ikonlar = new[] { "fa-car", "fa-car-side", "fa-tools", "fa-oil-can", "fa-gas-pump", "fa-cog", "fa-wrench", "fa-tachometer-alt", "fa-battery-full" };
+                    }
+                    @foreach (var ikon in ikonlar)
+                    {
+                        <div class="col-3 col-md-2 mb-3">
+                            <label class="btn btn-outline-primary w-100 p-2 icon-label @(Model.IkonClass == ikon ? "active-icon" : "")">
+                                <input type="radio" name="IkonClass" value="@ikon" @(Model.IkonClass == ikon ? "checked" : "") class="d-none">
+                                <i class="fa @ikon fa-2x d-block mb-1"></i>
+                                <small style="font-size: 10px;">@ikon</small>
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Açıklama</label>
+                <textarea name="Aciklama" class="form-control" id = "summernote" rows="5">@Model.Aciklama</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-warning px-4">Değişiklikleri Uygula</button>
+            <a href="/Default/IndexHizmetler" class="btn btn-secondary">Vazgeç</a>
+        </form>
+    </div>
+</div>
+
+<style>
+    .icon-label:has(input:checked), .active-icon {
+        background-color: #f6c23e !important;
+        border-color: #f6c23e !important;
+        color: white !important;
+    }
+</style>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+          height: 100,
+        lang:'tr'
+      });
+</script>

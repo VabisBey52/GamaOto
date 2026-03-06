@@ -1,0 +1,84 @@
+﻿@model Projeweb.Models.Tbl_Ayarlar
+@{
+    ViewBag.Title = "Site Ayarları";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4 shadow-sm">
+        <h6 class="mb-4 text-primary"><i class="fa fa-cog me-2"></i>Genel Site Ayarları</h6>
+
+        @if (TempData["Mesaj"] != null)
+        {
+            <div class="alert alert-success">@TempData["Mesaj"]</div>
+        }
+
+        @using (Html.BeginForm("SiteAyarlari", "Default", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.ID)
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label"><b>Dükkan Adresi</b></label>
+                    @Html.TextAreaFor(x => x.Adres, new { @class = "form-control", id = "summernote", rows = "3" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><b>Telefon</b></label>
+                    @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><b>E-posta</b></label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label"><b>Çalışma Saatleri (Haftaiçi)</b></label>
+                    @Html.TextBoxFor(x => x.CalismaSaatleriIci, new { @class = "form-control", placeholder = "Örn: 09:00 - 18:00" })
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label"><b>Çalışma Saatleri (Haftasonu)</b></label>
+                    @Html.TextBoxFor(x => x.CalismaSaatleriSonu, new { @class = "form-control", placeholder = "Örn: 09:00 - 13:00" })
+                </div>
+            </div>
+
+            <hr />
+            <h6 class="mb-3 text-secondary">Sosyal Medya Linkleri</h6>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><i class="fab fa-facebook-f text-primary"></i> Facebook</label>
+                    @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><i class="fab fa-instagram text-danger"></i> Instagram</label>
+                    @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><i class="fab fa-twitter text-info"></i> Twitter</label>
+                    @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label"><i class="fab fa-linkedin-in text-primary"></i> LinkedIn</label>
+                    @Html.TextBoxFor(x => x.Linkedin, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary px-5 py-2">
+                    <i class="fa fa-save me-2"></i>Ayarları Güncelle
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+          height: 100,
+        lang:'tr'
+      });
+</script>

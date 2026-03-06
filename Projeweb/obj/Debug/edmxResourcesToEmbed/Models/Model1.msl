@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GAMAOTOWEBModelStoreContainer" CdmEntityContainer="GAMAOTOWEBEntities">
+    <EntitySetMapping Name="Randevular">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Randevular">
+        <MappingFragment StoreEntitySet="Randevular">
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="RandevuID" ColumnName="RandevuID" />
+          <ScalarProperty Name="MusteriAdSoyad" ColumnName="MusteriAdSoyad" />
+          <ScalarProperty Name="MusteriEmail" ColumnName="MusteriEmail" />
+          <ScalarProperty Name="HizmetTuru" ColumnName="HizmetTuru" />
+          <ScalarProperty Name="RandevuTarihi" ColumnName="RandevuTarihi" />
+          <ScalarProperty Name="OzelTalep" ColumnName="OzelTalep" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Hizmetler">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Hizmetler">
+        <MappingFragment StoreEntitySet="Tbl_Hizmetler">
+          <ScalarProperty Name="HizmetID" ColumnName="HizmetID" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="IkonClass" ColumnName="IkonClass" />
+          <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Teknisyenler">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Teknisyenler">
+        <MappingFragment StoreEntitySet="Tbl_Teknisyenler">
+          <ScalarProperty Name="TeknisyenID" ColumnName="TeknisyenID" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+          <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+          <ScalarProperty Name="FacebookUrl" ColumnName="FacebookUrl" />
+          <ScalarProperty Name="TwitterUrl" ColumnName="TwitterUrl" />
+          <ScalarProperty Name="InstagramUrl" ColumnName="InstagramUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Yorumlar">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Yorumlar">
+        <MappingFragment StoreEntitySet="Tbl_Yorumlar">
+          <ScalarProperty Name="Puan" ColumnName="Puan" />
+          <ScalarProperty Name="YorumTarihi" ColumnName="YorumTarihi" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+          <ScalarProperty Name="MusteriAdSoyad" ColumnName="MusteriAdSoyad" />
+          <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+          <ScalarProperty Name="YorumMetni" ColumnName="YorumMetni" />
+          <ScalarProperty Name="MusteriResim" ColumnName="MusteriResim" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Mesajlar">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Mesajlar">
+        <MappingFragment StoreEntitySet="Tbl_Mesajlar">
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="CevapTarihi" ColumnName="CevapTarihi" />
+          <ScalarProperty Name="Cevap" ColumnName="Cevap" />
+          <ScalarProperty Name="Okundu" ColumnName="Okundu" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+          <ScalarProperty Name="Konu" ColumnName="Konu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Resimler">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Resimler">
+        <MappingFragment StoreEntitySet="Tbl_Resimler">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="OnResim" ColumnName="OnResim" />
+          <ScalarProperty Name="ArkaPlanResim" ColumnName="ArkaPlanResim" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="UstBaslik" ColumnName="UstBaslik" />
+          <ScalarProperty Name="SliderID" ColumnName="SliderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Ayarlar">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Ayarlar">
+        <MappingFragment StoreEntitySet="Tbl_Ayarlar">
+          <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="CalismaSaatleriSonu" ColumnName="CalismaSaatleriSonu" />
+          <ScalarProperty Name="CalismaSaatleriIci" ColumnName="CalismaSaatleriIci" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Uyeler">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Uyeler">
+        <MappingFragment StoreEntitySet="Tbl_Uyeler">
+          <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+          <ScalarProperty Name="UyeResim" ColumnName="UyeResim" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SSS">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_SSS">
+        <MappingFragment StoreEntitySet="Tbl_SSS">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Sira" ColumnName="Sira" />
+          <ScalarProperty Name="Cevap" ColumnName="Cevap" />
+          <ScalarProperty Name="Soru" ColumnName="Soru" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Duyurular">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Duyurular">
+        <MappingFragment StoreEntitySet="Tbl_Duyurular">
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="BegeniSayisi" ColumnName="BegeniSayisi" />
+          <ScalarProperty Name="Goruntulenme" ColumnName="Goruntulenme" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+          <ScalarProperty Name="DuyuruMetni" ColumnName="DuyuruMetni" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="DuyuruID" ColumnName="DuyuruID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DuyuruYorumlar">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_DuyuruYorumlar">
+        <MappingFragment StoreEntitySet="Tbl_DuyuruYorumlar">
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="YorumMetni" ColumnName="YorumMetni" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="DuyuruID" ColumnName="DuyuruID" />
+          <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Admin">
+      <EntityTypeMapping TypeName="GAMAOTOWEBModel.Tbl_Admin">
+        <MappingFragment StoreEntitySet="Tbl_Admin">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

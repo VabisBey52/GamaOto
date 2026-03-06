@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Projeweb.Models.Randevular>
+@{
+    ViewBag.Title = "Randevu Listesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-primary text-white">
+        <h6 class="m-0 font-weight-bold">Sistemdeki Tüm Randevular</h6>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Müşteri</th>
+                    <th>Email</th>
+                    <th>Hizmet</th>
+                    <th>İstek</th>
+                    <th>Tarih</th>
+                    <th>Durum</th> 
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MusteriAdSoyad</td>
+                        <td>@item.MusteriEmail</td>
+                        <td>@item.HizmetTuru</td>
+                        <td>@item.OzelTalep</td>
+                        <td>@Convert.ToDateTime(item.RandevuTarihi).ToShortDateString()</td>
+                        <td>
+                            @if (item.Durum == "Beklemede")
+                            {
+                                <span class="badge badge-warning">Beklemede</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-success">Onaylandı</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Durum == "Beklemede")
+                            {
+                                <a href="/Default/RandevuOnayla/@item.RandevuID" class="btn btn-success btn-sm">
+                                    <i class="fa fa-check"></i> Onayla
+                                </a>
+                            }
+                            <a href="/Default/RandevuSil/@item.RandevuID" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğine emin misin?')">
+                                <i class="fa fa-trash"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

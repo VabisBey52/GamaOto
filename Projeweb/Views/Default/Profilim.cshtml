@@ -1,0 +1,45 @@
+﻿@model Projeweb.Models.Tbl_Uyeler
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="bg-light rounded p-5 shadow-sm">
+                <div class="text-center mb-4">
+                    <img src="@Model.UyeResim" class="rounded-circle img-thumbnail mb-3" width="150" height="150" style="object-fit: cover;">
+                    <h3>Profil Ayarları</h3>
+                    <p class="text-muted">Kayıt Tarihi: @Model.KayitTarihi.Value.ToString("dd.MM.yyyy")</p>
+                </div>
+
+                @if (TempData["Mesaj"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Mesaj"]</div>
+                }
+
+                @using (Html.BeginForm("Profilim", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Ad Soyad</label>
+                            @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control", style = "height: 50px;" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">E-posta Adresi</label>
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", style = "height: 50px;" })
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Profil Fotoğrafını Değiştir</label>
+                            <input type="file" name="ResimDosyasi" class="form-control" accept=".jpg,.jpeg,.png">
+                        </div>
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="btn btn-primary py-3 px-5">Bilgileri Güncelle</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,200 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>GamaOto - Oto Tamir ve Bakım Servisi</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="oto tamir, araba bakımı, servis, motor tamiri" name="keywords">
+    <meta content="Nitelikli araç tamir ve bakım merkezi." name="description">
+
+    <link href="~/tema/img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+    <link href="~/tema/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/tema/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/tema/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+    <link href="~/tema/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/tema/css/style.css" rel="stylesheet">
+</head>
+<body>
+    @Html.Action("PartialNavbar", "Default")
+
+    @RenderBody()
+
+    @Html.Action("PartialFooter", "Default")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="~/tema/js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/tema/lib/wow/wow.min.js"></script>
+    <script src="~/tema/lib/easing/easing.min.js"></script>
+    <script src="~/tema/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/tema/lib/counterup/counterup.min.js"></script>
+    <script src="~/tema/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/tema/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/tema/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/tema/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="~/tema/js/main.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    <script type="text/javascript">
+
+$(document).ready(function () {
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000"
+    };
+
+    var basariMesaji = '@TempData["Mesaj"]';
+    if (basariMesaji) {
+        toastr.success(basariMesaji, "Başarılı!");
+    }
+    var hataMesaji = '@TempData["HataMesaji"]';
+    if (hataMesaji) {
+        toastr.error(hataMesaji, "Hata!");
+    }
+});
+    </script>
+    <script>
+            function yildizSec(puan) {
+                for (let i = 1; i <= 5; i++) {
+                    let img = document.getElementById("yildiz-resim-" + i);
+
+                    if (i <= puan) {
+                        img.src = "/tema/img/icons8-star-full30.png";
+                    } else {
+                        img.src = "/tema/img/icons8-star-empty30.png";
+                    }
+                }
+            }
+
+            function btnDegistir() {
+                var btn = document.getElementById("btnToggleSSS");
+                setTimeout(function () {
+                    var isExpanded = document.getElementById("extraSSS").classList.contains("show");
+                    if (isExpanded) {
+                        btn.innerHTML = "Daha Az Gör";
+                    } else {
+                        btn.innerHTML = "Tüm Soruları Gör";
+                    }
+                }, 400);
+            }
+
+            function yorumBtnDegistir() {
+                var btn = document.getElementById("btnToggleYorum");
+                setTimeout(function () {
+                    var isExpanded = document.getElementById("extraYorumlar").classList.contains("show");
+                    if (isExpanded) {
+                        btn.innerHTML = "Daha Az Gör";
+                    } else {
+                        btn.innerHTML = "Tüm Müşteri Yorumlarını Gör";
+                    }
+                }, 400);
+            }
+
+            $(document).ready(function () {
+                $('.nav-pills .nav-link').click(function () {
+                    $('.nav-pills .nav-link').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+
+            function hizmetYazisiDegistir() {
+                var btn = document.getElementById("btnHizmetGoster");
+                setTimeout(function () {
+                    var isExpanded = document.getElementById("extraHizmetNav").classList.contains("show");
+                    btn.innerHTML = isExpanded ? "DAHA AZ GÖR -" : "TÜMÜNÜ GÖR +";
+                }, 400);
+            }
+
+            function teamBtnDegistir() {
+                var btn = document.getElementById("btnTeamToggle");
+                setTimeout(function () {
+                    var isExpanded = document.getElementById("extraTeam").classList.contains("show");
+                    if (isExpanded) {
+                        btn.innerHTML = 'Daha Az Gör <i class="fa fa-minus ms-2"></i>';
+                    } else {
+                        btn.innerHTML = 'Tüm Teknisyenlerimizi Gör <i class="fa fa-plus ms-2"></i>';
+                    }
+                }, 450);
+            }
+
+            $(document).ready(function () {
+        var mesaj = '@TempData["Mesajyorum"]';
+        var durum = '@TempData["Durumyorum"]';
+
+        if (mesaj) {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            };
+
+            if (durum == "success") {
+                toastr.success(mesaj);
+            } else if (durum == "danger") {
+                toastr.error(mesaj);
+            }
+        }
+            });
+    </script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: '...',
+            tabsize: 2,
+            height: 150,
+            lang: 'tr'
+        });
+
+        $('#summernote_yorum').summernote({
+            placeholder: 'Deneyiminizi detaylandırın...',
+            tabsize: 2,
+            height: 150,
+            lang: 'tr'
+        });
+
+        $('#summernote_mesaj').summernote({
+            placeholder: 'İsteğinizi Yazınız...',
+            tabsize: 2,
+            height: 150,
+            lang: 'tr'
+        });
+    </script>
+
+    <style>
+        .note-editable {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+    </style>
+
+</body>
+</html>

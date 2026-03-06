@@ -1,0 +1,51 @@
+﻿@model Projeweb.Models.Tbl_Duyurular
+
+@{
+    ViewBag.Title = "Yeni Duyuru Ekle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml"; 
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4 shadow-sm">
+        <h4 class="mb-4">Yeni Duyuru Oluştur</h4>
+
+        @using (Html.BeginForm("DuyuruEkle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Duyuru Başlığı</label>
+                @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", placeholder = "Başlık giriniz...", required = "required" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Duyuru Görseli</label>
+                <input type="file" name="ResimDosyasi" class="form-control" accept="image/*" required />
+                <small class="text-muted">Önerilen boyut: 800x400px</small>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">
+                    <label class="form-label fw-bold">Duyuru Metni</label>
+                </label>
+                @Html.TextAreaFor(x => x.DuyuruMetni, new { @class = "form-control", id = "summernote", placeholder = "Duyuru detaylarını buraya yazın..." })
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary py-2 px-5">
+                    <i class="fa fa-save me-2"></i>Duyuruyu Yayınla
+                </button>
+                <a href="/Default/DuyuruListesi" class="btn btn-secondary py-2 px-4 ms-2">Vazgeç</a>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+          height: 100,
+        lang:'tr'
+      });
+</script>

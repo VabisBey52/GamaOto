@@ -1,0 +1,62 @@
+﻿@using Projeweb.Models
+
+@{
+    ViewBag.Title = "TeknisyenEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <h3 class="mb-4">Teknisyen Yönetimi</h3>
+
+    <form method="post" action="/Default/TeknisyenEkle" enctype="multipart/form-data" class="mb-5 p-4 bg-light rounded shadow-sm border">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Ad Soyad</label>
+                <input type="text" name="AdSoyad" class="form-control" placeholder="Teknisyenin Adı" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Uzmanlık Alanı</label>
+                <input type="text" name="Gorev" class="form-control" placeholder="Örn: Motor Ustası" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Personel Resmi</label>
+                <input type="file" name="ResimDosyasi" class="form-control" accept="image/*" required>
+            </div>
+            <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-success w-100 py-2">
+                    <i class="fa fa-plus me-2"></i>Yeni Teknisyen Ekle
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <hr class="my-5" />
+
+    <h4 class="mb-4">Mevcut Kadromuz</h4>
+    <div class="row g-4">
+        @foreach (var x in Model)
+        {
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item shadow-sm border rounded bg-white">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="@x.ResimYolu" style="height:300px; object-fit:cover;" alt="@x.AdSoyad">
+                        <div class="team-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h5 class="fw-bold mb-0">@x.AdSoyad</h5>
+                        <small class="text-primary font-weight-bold">@x.Gorev</small>
+                        <div class="mt-3">
+                            <a href="/Default/TeknisyenSil/@x.TeknisyenID"
+                               class="btn btn-danger btn-sm w-100"
+                               onclick="return confirm('@x.AdSoyad isimli personeli silmek istediğinize emin misiniz?')">
+                                <i class="fa fa-trash me-2"></i>Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

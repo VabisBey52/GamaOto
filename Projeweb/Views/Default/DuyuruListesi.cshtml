@@ -1,0 +1,159 @@
+﻿@model List<Projeweb.Models.Tbl_Duyurular>
+
+@{
+    ViewBag.Title = "Duyuru ve Yorum Yönetimi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4 shadow-sm mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="m-0 text-primary"><i class="fa fa-bullhorn me-2"></i>Duyuru Listesi</h4>
+            <a href="/Default/DuyuruEkle" class="btn btn-primary btn-sm"><i class="fa fa-plus me-2"></i>Yeni Duyuru</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Görsel</th>
+                        <th>Başlık</th>
+                        <th>Tarih</th>
+                        <th>İzlenme</th>
+                        <th>Beğeni</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td><img src="@x.ResimYolu" style="width:40px; height:40px; object-fit:cover;" class="rounded border"></td>
+                            <td><small class="fw-bold">@x.Baslik</small></td>
+                            <td>@x.Tarih.Value.ToString("dd.MM.yyyy")</td>
+                            <td><span class="badge bg-info text-dark">@x.Goruntulenme</span></td>
+                            <td><span class="badge bg-danger text-dark">@x.BegeniSayisi</span></td>
+                            <td>
+                                <a href="/Default/DuyuruGetir/@x.DuyuruID" class="btn btn-sm btn-outline-warning"><i class="fa fa-edit"></i></a>
+                                <a href="javascript:void(0);"
+                                   data-url="/Default/DuyuruSil/@x.DuyuruID"
+                                   class="btn btn-danger btn-sm btn-sil">
+                                    <i class="fa fa-trash"></i> Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <div class="bg-light rounded h-100 p-4 shadow-sm">
+        <h4 class="mb-4 text-primary"><i class="fa fa-comments me-2"></i>Yorum Yönetimi</h4>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Durum</th>
+                        <th>Gönderen</th>
+                        <th>Yorum İçeriği</th>
+                        <th>Tarih</th>
+                        <th class="text-center">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.TumYorumlar != null)
+                    {
+                        foreach (var item in (List<Projeweb.Models.Tbl_DuyuruYorumlar>)ViewBag.TumYorumlar)
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.Durum == true)
+                                    {
+                                        <span class="badge bg-success">Yayında</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning text-dark">Gizli / Bekliyor</span>
+                                    }
+                                </td>
+                                <td><span class="badge bg-secondary">@item.AdSoyad</span></td>
+                                <td style="font-style: italic; font-size: 0.9rem;">"@item.YorumMetni"</td>
+                                <td><small>@item.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</small></td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        @if (item.Durum == false)
+                                        {
+                                            <a href="/Default/DuyuruYorumOnayla/@item.YorumID" class="btn btn-sm btn-success">
+                                                <i class="fa fa-check"></i> Onayla
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Default/DuyuruYorumGizle/@item.YorumID" class="btn btn-sm btn-secondary">
+                                                <i class="fa fa-eye-slash"></i> Gizle
+                                            </a>
+                                        }
+                                        <a href="javascript:void(0);"
+                                           data-url="/Default/DuyuruYorumSil/@item.YorumID"
+                                           class="btn btn-danger btn-sm btn-sil">
+                                            <i class="fa fa-trash"></i> Sil
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.btn-sil').click(function () {
+        var silinecekUrl = $(this).data('url');
+
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu yorum tamamen silinecektir, bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, Sil!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = silinecekUrl;
+            }
+        });
+    });
+
+    $('.btn-sil').click(function () {
+        var silinecekUrl = $(this).data('url');
+
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu Duyuru tamamen silinecektir, bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, Sil!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = silinecekUrl;
+            }
+        });
+    });
+
+
+</script>

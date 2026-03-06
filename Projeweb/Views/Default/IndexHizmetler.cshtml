@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Projeweb.Models.Tbl_Hizmetler>
+@{
+    ViewBag.Title = "Hizmet Listesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-primary text-white d-flex justify-content-between">
+        <h6 class="m-0 font-weight-bold">Sistemdeki Hizmetler</h6>
+        <a href="/Default/HizmetEkle" class="btn btn-light btn-sm">Yeni Hizmet Ekle</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">İkon</th>
+                    <th>Başlık</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa @item.IkonClass fa-lg text-primary"></i>
+                        </td>
+                        <td>@item.Baslik</td>
+                        <td>
+                            <a href="/Default/HizmetGetir/@item.HizmetID" class="btn btn-warning btn-sm">
+                                <i class="fa fa-edit"></i> Düzenle
+                            </a>
+                            <a href="/Default/HizmetSil/@item.HizmetID" class="btn btn-danger btn-sm" onclick="return confirm('Silinsin mi?')">
+                                <i class="fa fa-trash"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

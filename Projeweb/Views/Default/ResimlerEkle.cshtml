@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Projeweb.Models.Tbl_Resimler>
+
+@{
+    ViewBag.Title = "Resim Yönetimi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4 mb-4">
+        <h6 class="mb-4">Yeni Resimler Ekle</h6>
+        @using (Html.BeginForm("Resimlerekle", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="mb-3">
+                <label class="form-label">Üst Başlık (Küçük Yazı)</label>
+                <input type="text" name="UstBaslik" class="form-control" placeholder="// Araç Servisi //">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ana Başlık (Büyük Yazı)</label>
+                <input type="text" name="Baslik" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Arka Plan Resmi (Büyük)</label>
+                <input type="file" name="ArkaPlan" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ön Resim (Sağdaki Araç)</label>
+                <input type="file" name="OnResim" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Slider'ı Kaydet</button>
+        }
+    </div>
+
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Mevcut Slider Listesi</h6>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Arka Plan</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Baslik</td>
+                            <td>
+                                <img src="@item.ArkaPlanResim" width="100" class="rounded" />
+                            </td>
+                            <td>
+                                <a href="/Default/ResimGetir/@item.SliderID" class="btn btn-warning btn-sm">Güncelle</a>
+                                <a href="/Default/ResimlerSil/@item.SliderID" class="btn btn-danger btn-sm" onclick="return confirm('Bu sliderı silmek istediğinize emin misiniz?')">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

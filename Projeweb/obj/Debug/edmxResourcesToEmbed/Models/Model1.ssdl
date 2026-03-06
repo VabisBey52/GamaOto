@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GAMAOTOWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Randevular">
+    <Key>
+      <PropertyRef Name="RandevuID" />
+    </Key>
+    <Property Name="RandevuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MusteriAdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="MusteriEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="HizmetTuru" Type="nvarchar" MaxLength="50" />
+    <Property Name="RandevuTarihi" Type="datetime" />
+    <Property Name="OzelTalep" Type="nvarchar(max)" />
+    <Property Name="Durum" Type="nvarchar" MaxLength="20" />
+    <Property Name="UyeID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_Ayarlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="CalismaSaatleriIci" Type="nvarchar" MaxLength="100" />
+    <Property Name="CalismaSaatleriSonu" Type="nvarchar" MaxLength="100" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="150" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="150" />
+    <Property Name="Instagram" Type="nvarchar" MaxLength="150" />
+    <Property Name="Linkedin" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Tbl_Duyurular">
+    <Key>
+      <PropertyRef Name="DuyuruID" />
+    </Key>
+    <Property Name="DuyuruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Baslik" Type="nvarchar" MaxLength="200" />
+    <Property Name="DuyuruMetni" Type="nvarchar(max)" />
+    <Property Name="ResimYolu" Type="nvarchar" MaxLength="250" />
+    <Property Name="Tarih" Type="datetime" />
+    <Property Name="Goruntulenme" Type="int" />
+    <Property Name="BegeniSayisi" Type="int" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="UyeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_DuyuruYorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DuyuruID" Type="int" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="YorumMetni" Type="nvarchar(max)" />
+    <Property Name="Tarih" Type="datetime" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="UyeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Hizmetler">
+    <Key>
+      <PropertyRef Name="HizmetID" />
+    </Key>
+    <Property Name="HizmetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Baslik" Type="nvarchar" MaxLength="100" />
+    <Property Name="Aciklama" Type="nvarchar(max)" />
+    <Property Name="IkonClass" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResimYolu" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Tbl_Mesajlar">
+    <Key>
+      <PropertyRef Name="MesajID" />
+    </Key>
+    <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="70" />
+    <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mesaj" Type="nvarchar(max)" />
+    <Property Name="Tarih" Type="datetime" />
+    <Property Name="Okundu" Type="bit" />
+    <Property Name="Cevap" Type="nvarchar(max)" />
+    <Property Name="CevapTarihi" Type="datetime" />
+    <Property Name="UyeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Resimler">
+    <Key>
+      <PropertyRef Name="SliderID" />
+    </Key>
+    <Property Name="SliderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UstBaslik" Type="nvarchar" MaxLength="150" />
+    <Property Name="Baslik" Type="nvarchar" MaxLength="250" />
+    <Property Name="ArkaPlanResim" Type="nvarchar" MaxLength="250" />
+    <Property Name="OnResim" Type="nvarchar" MaxLength="250" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_SSS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Soru" Type="nvarchar(max)" />
+    <Property Name="Cevap" Type="nvarchar(max)" />
+    <Property Name="Sira" Type="int" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_Teknisyenler">
+    <Key>
+      <PropertyRef Name="TeknisyenID" />
+    </Key>
+    <Property Name="TeknisyenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gorev" Type="nvarchar" MaxLength="100" />
+    <Property Name="ResimYolu" Type="nvarchar" MaxLength="250" />
+    <Property Name="FacebookUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="TwitterUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="InstagramUrl" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Tbl_Uyeler">
+    <Key>
+      <PropertyRef Name="UyeID" />
+    </Key>
+    <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="UyeResim" Type="nvarchar" MaxLength="250" />
+    <Property Name="KayitTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_Yorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MusteriAdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="Meslek" Type="nvarchar" MaxLength="50" />
+    <Property Name="YorumMetni" Type="nvarchar(max)" />
+    <Property Name="MusteriResim" Type="nvarchar" MaxLength="250" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="UyeID" Type="int" />
+    <Property Name="YorumTarihi" Type="datetime" />
+    <Property Name="Puan" Type="int" />
+  </EntityType>
+  <Association Name="FK__Tbl_Duyur__Duyur__681373AD">
+    <End Role="Tbl_Duyurular" Type="Self.Tbl_Duyurular" Multiplicity="0..1" />
+    <End Role="Tbl_DuyuruYorumlar" Type="Self.Tbl_DuyuruYorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Duyurular">
+        <PropertyRef Name="DuyuruID" />
+      </Principal>
+      <Dependent Role="Tbl_DuyuruYorumlar">
+        <PropertyRef Name="DuyuruID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Duyurular_Tbl_Uyeler">
+    <End Role="Tbl_Uyeler" Type="Self.Tbl_Uyeler" Multiplicity="0..1" />
+    <End Role="Tbl_Duyurular" Type="Self.Tbl_Duyurular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_Duyurular">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_DuyuruYorumlar_Tbl_Uyeler">
+    <End Role="Tbl_Uyeler" Type="Self.Tbl_Uyeler" Multiplicity="0..1" />
+    <End Role="Tbl_DuyuruYorumlar" Type="Self.Tbl_DuyuruYorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_DuyuruYorumlar">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Yorumlar_Tbl_Uyeler">
+    <End Role="Tbl_Uyeler" Type="Self.Tbl_Uyeler" Multiplicity="0..1" />
+    <End Role="Tbl_Yorumlar" Type="Self.Tbl_Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_Yorumlar">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GAMAOTOWEBModelStoreContainer">
+    <EntitySet Name="Randevular" EntityType="Self.Randevular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Ayarlar" EntityType="Self.Tbl_Ayarlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Duyurular" EntityType="Self.Tbl_Duyurular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_DuyuruYorumlar" EntityType="Self.Tbl_DuyuruYorumlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Hizmetler" EntityType="Self.Tbl_Hizmetler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Mesajlar" EntityType="Self.Tbl_Mesajlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Resimler" EntityType="Self.Tbl_Resimler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SSS" EntityType="Self.Tbl_SSS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Teknisyenler" EntityType="Self.Tbl_Teknisyenler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Uyeler" EntityType="Self.Tbl_Uyeler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Yorumlar" EntityType="Self.Tbl_Yorumlar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Tbl_Duyur__Duyur__681373AD" Association="Self.FK__Tbl_Duyur__Duyur__681373AD">
+      <End Role="Tbl_Duyurular" EntitySet="Tbl_Duyurular" />
+      <End Role="Tbl_DuyuruYorumlar" EntitySet="Tbl_DuyuruYorumlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Duyurular_Tbl_Uyeler" Association="Self.FK_Tbl_Duyurular_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_Duyurular" EntitySet="Tbl_Duyurular" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_DuyuruYorumlar_Tbl_Uyeler" Association="Self.FK_Tbl_DuyuruYorumlar_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_DuyuruYorumlar" EntitySet="Tbl_DuyuruYorumlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Yorumlar_Tbl_Uyeler" Association="Self.FK_Tbl_Yorumlar_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_Yorumlar" EntitySet="Tbl_Yorumlar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

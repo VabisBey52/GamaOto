@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Projeweb.Models.Tbl_Yorumlar>
+@{
+    ViewBag.Title = "AdminYorumlar";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Müşteri</th>
+        <th>Meslek</th>
+        <th>Puan</th>
+        <th>Yorum</th>
+        <th>Tarih</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MusteriAdSoyad</td>
+            <td>@item.Meslek</td>
+            <td>@item.Puan</td>
+            <td>@Html.Raw(item.YorumMetni)</td>
+            <td>@item.YorumTarihi</td>
+            <td>@(item.Durum == true ? "Onaylı" : "Bekliyor")</td>
+            <td>
+                @if (item.Durum == false)
+                {
+                    <a href="/Default/YorumOnayla/@item.YorumID" class="btn btn-success">Onayla</a>
+                }
+                else
+                {
+                    <a href="/Default/YorumGizle/@item.YorumID" class="btn btn-warning">Gizle</a>
+                }
+
+                <a href="javascript:void(0);"
+                   data-url="/Default/YorumSil/@item.YorumID"
+                   class="btn btn-danger btn-sm btn-sil">
+                    <i class="fa fa-trash"></i> Sil
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<script>
+    $('.btn-sil').click(function () {
+        var silinecekUrl = $(this).data('url');
+
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu yorum tamamen silinecektir, bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, Sil!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = silinecekUrl;
+            }
+        });
+    });
+</script>

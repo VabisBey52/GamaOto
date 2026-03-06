@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8db367ad23c4f0895ee7b9b1c107809" Name="Diagram1">
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Randevular" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Hizmetler" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Teknisyenler" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Yorumlar" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Mesajlar" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Resimler" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Ayarlar" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Uyeler" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.sysdiagrams" Width="1.5" PointX="3.375" PointY="7.75" />
+        <AssociationConnector Association="GAMAOTOWEBModel.FK_Tbl_Yorumlar_Tbl_Uyeler" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_SSS" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Duyurular" Width="1.5" PointX="7.375" PointY="8" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_DuyuruYorumlar" Width="1.5" PointX="9.625" PointY="8.125" />
+        <AssociationConnector Association="GAMAOTOWEBModel.FK__Tbl_Duyur__Duyur__681373AD" />
+        <AssociationConnector Association="GAMAOTOWEBModel.FK_Tbl_Duyurular_Tbl_Uyeler" />
+        <AssociationConnector Association="GAMAOTOWEBModel.FK_Tbl_DuyuruYorumlar_Tbl_Uyeler" />
+        <EntityTypeShape EntityType="GAMAOTOWEBModel.Tbl_Admin" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

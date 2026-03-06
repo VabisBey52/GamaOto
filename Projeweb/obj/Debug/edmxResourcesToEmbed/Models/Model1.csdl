@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GAMAOTOWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Randevular">
+    <Key>
+      <PropertyRef Name="RandevuID" />
+    </Key>
+    <Property Name="RandevuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriAdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MusteriEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HizmetTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RandevuTarihi" Type="DateTime" Precision="3" />
+    <Property Name="OzelTalep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Durum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UyeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Hizmetler">
+    <Key>
+      <PropertyRef Name="HizmetID" />
+    </Key>
+    <Property Name="HizmetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IkonClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ResimYolu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Teknisyenler">
+    <Key>
+      <PropertyRef Name="TeknisyenID" />
+    </Key>
+    <Property Name="TeknisyenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gorev" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ResimYolu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TwitterUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="InstagramUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Yorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriAdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Meslek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YorumMetni" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MusteriResim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Durum" Type="Boolean" />
+    <Property Name="UyeID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Uyeler" Relationship="GAMAOTOWEBModel.FK_Tbl_Yorumlar_Tbl_Uyeler" FromRole="Tbl_Yorumlar" ToRole="Tbl_Uyeler" />
+    <Property Name="YorumTarihi" Type="DateTime" Precision="3" />
+    <Property Name="Puan" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="GAMAOTOWEBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Randevular" EntityType="Self.Randevular" />
+    <EntitySet Name="Tbl_Hizmetler" EntityType="Self.Tbl_Hizmetler" />
+    <EntitySet Name="Tbl_Teknisyenler" EntityType="Self.Tbl_Teknisyenler" />
+    <EntitySet Name="Tbl_Yorumlar" EntityType="Self.Tbl_Yorumlar" />
+    <EntitySet Name="Tbl_Mesajlar" EntityType="GAMAOTOWEBModel.Tbl_Mesajlar" />
+    <EntitySet Name="Tbl_Resimler" EntityType="GAMAOTOWEBModel.Tbl_Resimler" />
+    <EntitySet Name="Tbl_Ayarlar" EntityType="GAMAOTOWEBModel.Tbl_Ayarlar" />
+    <EntitySet Name="Tbl_Uyeler" EntityType="GAMAOTOWEBModel.Tbl_Uyeler" />
+    <EntitySet Name="sysdiagrams" EntityType="GAMAOTOWEBModel.sysdiagrams" />
+    <AssociationSet Name="FK_Tbl_Yorumlar_Tbl_Uyeler" Association="GAMAOTOWEBModel.FK_Tbl_Yorumlar_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_Yorumlar" EntitySet="Tbl_Yorumlar" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_SSS" EntityType="GAMAOTOWEBModel.Tbl_SSS" />
+    <EntitySet Name="Tbl_Duyurular" EntityType="GAMAOTOWEBModel.Tbl_Duyurular" />
+    <EntitySet Name="Tbl_DuyuruYorumlar" EntityType="GAMAOTOWEBModel.Tbl_DuyuruYorumlar" />
+    <AssociationSet Name="FK__Tbl_Duyur__Duyur__681373AD" Association="GAMAOTOWEBModel.FK__Tbl_Duyur__Duyur__681373AD">
+      <End Role="Tbl_Duyurular" EntitySet="Tbl_Duyurular" />
+      <End Role="Tbl_DuyuruYorumlar" EntitySet="Tbl_DuyuruYorumlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Duyurular_Tbl_Uyeler" Association="GAMAOTOWEBModel.FK_Tbl_Duyurular_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_Duyurular" EntitySet="Tbl_Duyurular" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_DuyuruYorumlar_Tbl_Uyeler" Association="GAMAOTOWEBModel.FK_Tbl_DuyuruYorumlar_Tbl_Uyeler">
+      <End Role="Tbl_Uyeler" EntitySet="Tbl_Uyeler" />
+      <End Role="Tbl_DuyuruYorumlar" EntitySet="Tbl_DuyuruYorumlar" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_Admin" EntityType="GAMAOTOWEBModel.Tbl_Admin" />
+  </EntityContainer>
+  <EntityType Name="Tbl_Mesajlar">
+    <Key>
+      <PropertyRef Name="MesajID" />
+    </Key>
+    <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="Okundu" Type="Boolean" />
+    <Property Name="Cevap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CevapTarihi" Type="DateTime" Precision="3" />
+    <Property Name="UyeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Resimler">
+    <Key>
+      <PropertyRef Name="SliderID" />
+    </Key>
+    <Property Name="SliderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UstBaslik" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Baslik" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ArkaPlanResim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OnResim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Durum" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Tbl_Ayarlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CalismaSaatleriIci" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CalismaSaatleriSonu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Instagram" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Linkedin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Uyeler">
+    <Key>
+      <PropertyRef Name="UyeID" />
+    </Key>
+    <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UyeResim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Tbl_Yorumlar" Relationship="GAMAOTOWEBModel.FK_Tbl_Yorumlar_Tbl_Uyeler" FromRole="Tbl_Uyeler" ToRole="Tbl_Yorumlar" />
+    <NavigationProperty Name="Tbl_Duyurular" Relationship="GAMAOTOWEBModel.FK_Tbl_Duyurular_Tbl_Uyeler" FromRole="Tbl_Uyeler" ToRole="Tbl_Duyurular" />
+    <NavigationProperty Name="Tbl_DuyuruYorumlar" Relationship="GAMAOTOWEBModel.FK_Tbl_DuyuruYorumlar_Tbl_Uyeler" FromRole="Tbl_Uyeler" ToRole="Tbl_DuyuruYorumlar" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Tbl_Yorumlar_Tbl_Uyeler">
+    <End Type="GAMAOTOWEBModel.Tbl_Uyeler" Role="Tbl_Uyeler" Multiplicity="0..1" />
+    <End Type="GAMAOTOWEBModel.Tbl_Yorumlar" Role="Tbl_Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_Yorumlar">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tbl_SSS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Soru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cevap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sira" Type="Int32" />
+    <Property Name="Durum" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Tbl_Duyurular">
+    <Key>
+      <PropertyRef Name="DuyuruID" />
+    </Key>
+    <Property Name="DuyuruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DuyuruMetni" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ResimYolu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="Goruntulenme" Type="Int32" />
+    <Property Name="BegeniSayisi" Type="Int32" />
+    <Property Name="Durum" Type="Boolean" />
+    <NavigationProperty Name="Tbl_DuyuruYorumlar" Relationship="GAMAOTOWEBModel.FK__Tbl_Duyur__Duyur__681373AD" FromRole="Tbl_Duyurular" ToRole="Tbl_DuyuruYorumlar" />
+    <Property Name="UyeID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Uyeler" Relationship="GAMAOTOWEBModel.FK_Tbl_Duyurular_Tbl_Uyeler" FromRole="Tbl_Duyurular" ToRole="Tbl_Uyeler" />
+  </EntityType>
+  <EntityType Name="Tbl_DuyuruYorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DuyuruID" Type="Int32" />
+    <Property Name="AdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="YorumMetni" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="Durum" Type="Boolean" />
+    <NavigationProperty Name="Tbl_Duyurular" Relationship="GAMAOTOWEBModel.FK__Tbl_Duyur__Duyur__681373AD" FromRole="Tbl_DuyuruYorumlar" ToRole="Tbl_Duyurular" />
+    <Property Name="UyeID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Uyeler" Relationship="GAMAOTOWEBModel.FK_Tbl_DuyuruYorumlar_Tbl_Uyeler" FromRole="Tbl_DuyuruYorumlar" ToRole="Tbl_Uyeler" />
+  </EntityType>
+  <Association Name="FK__Tbl_Duyur__Duyur__681373AD">
+    <End Type="GAMAOTOWEBModel.Tbl_Duyurular" Role="Tbl_Duyurular" Multiplicity="0..1" />
+    <End Type="GAMAOTOWEBModel.Tbl_DuyuruYorumlar" Role="Tbl_DuyuruYorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Duyurular">
+        <PropertyRef Name="DuyuruID" />
+      </Principal>
+      <Dependent Role="Tbl_DuyuruYorumlar">
+        <PropertyRef Name="DuyuruID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Duyurular_Tbl_Uyeler">
+    <End Type="GAMAOTOWEBModel.Tbl_Uyeler" Role="Tbl_Uyeler" Multiplicity="0..1" />
+    <End Type="GAMAOTOWEBModel.Tbl_Duyurular" Role="Tbl_Duyurular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_Duyurular">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_DuyuruYorumlar_Tbl_Uyeler">
+    <End Type="GAMAOTOWEBModel.Tbl_Uyeler" Role="Tbl_Uyeler" Multiplicity="0..1" />
+    <End Type="GAMAOTOWEBModel.Tbl_DuyuruYorumlar" Role="Tbl_DuyuruYorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Tbl_DuyuruYorumlar">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tbl_Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,79 @@
+﻿
+@model Projeweb.Models.Tbl_Mesajlar
+
+@{
+    ViewBag.Title = "Mesaj Detayı";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Mesaj Detayı</h6>
+        <hr />
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"><b>Gönderen:</b></label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.AdSoyad (@Model.Email)</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"><b>Konu:</b></label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Konu</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"><b>Tarih:</b></label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Tarih.Value.ToString("dd MMMM yyyy HH:mm")</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"><b>Mesaj:</b></label>
+            <div class="col-sm-10">
+                <div class="p-3 bg-white border rounded">
+                    @Model.Mesaj
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="/Default/GelenMesajlar" class="btn btn-secondary">
+                <i class="fa fa-arrow-left"></i> Listeye Dön
+            </a>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Cevap))
+{
+    <div class="row mb-3 mt-4">
+        <label class="col-sm-2 col-form-label text-success"><b>Senin Cevabın:</b></label>
+        <div class="col-sm-10">
+            <div class="p-3 bg-white border border-success rounded">
+                @Model.Cevap
+                <div class="text-end mt-2">
+                    <small class="text-muted">@Model.CevapTarihi.Value.ToString("dd MMMM yyyy HH:mm")</small>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+
+<div class="bg-light rounded p-4 mt-4 border">
+    <h6 class="mb-4">Hızlı Cevap Yaz</h6>
+    <form method="post" action="/Default/MesajCevapla">
+        <input type="hidden" name="MesajID" value="@Model.MesajID" />
+
+        <div class="mb-3">
+            <textarea name="CevapMetni" class="form-control" rows="4" placeholder="Müşteriye iletilecek cevabı buraya yazın..." required></textarea>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-paper-plane"></i> Cevabı Kaydet ve Gönder
+            </button>
+        </div>
+    </form>
+</div>

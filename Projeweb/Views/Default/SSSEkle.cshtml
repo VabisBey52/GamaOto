@@ -1,0 +1,52 @@
+﻿@model List<Projeweb.Models.Tbl_SSS>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded p-4 mb-4">
+        <h4 class="mb-4">Yeni SSS Ekle</h4>
+        <form action="/Default/SSSEkle" method="post">
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="text" name="Soru" class="form-control" placeholder="Soru" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" name="Cevap" class="form-control" placeholder="Cevap" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="Sira" class="form-control" placeholder="Sıra" value="1">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3 w-100">Hızlı Kaydet</button>
+        </form>
+    </div>
+
+    <div class="bg-light text-center rounded p-4">
+        <h4 class="mb-4 text-start">SSS Listesi</h4>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th>Sıra</th>
+                        <th>Soru</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.Sira</td>
+                            <td>@x.Soru</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="/Default/SSSGuncelle/@x.ID">Güncelle</a>
+                                <a class="btn btn-sm btn-danger" href="/Default/SSSSil/@x.ID" onclick="return confirm('Silmek istediğine emin misin?')">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

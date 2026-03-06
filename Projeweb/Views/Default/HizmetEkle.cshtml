@@ -1,0 +1,96 @@
+﻿@model Projeweb.Models.Tbl_Hizmetler
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-success text-white">
+        <h6 class="m-0 font-weight-bold">Yeni Hizmet Tanımla</h6>
+    </div>
+    <div class="card-body">
+        <form method="post" action="/Default/HizmetEkle" enctype="multipart/form-data">
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Hizmet Adı</label>
+                <input type="text" name="Baslik" class="form-control" placeholder="Örn: Periyodik Bakım" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Hizmet Resmi Seç</label>
+                <input type="file" name="ResimDosyasi" class="form-control" accept=".jpg,.png,.jpeg" />
+                <small class="text-muted">Önerilen boyut: 600x400px</small>
+            </div>
+
+            <div class="form-group mb-4">
+                <label class="font-weight-bold d-block">Bir Hizmet İkonu Seçin</label>
+                <div class="row text-center p-2 bg-light border rounded mx-0" style="max-height: 250px; overflow-y: auto;">
+                    @{
+                        var ikonlar = new[] {
+                            "fa-car", "fa fa-car-side", "fa-tools", "fa-oil-can",
+                            "fa-gas-pump", "fa-cog", "fa-wrench", "fa-tachometer-alt",
+                            "fa-battery-full", "fa-shield-alt", "fa-shower", "fa-snowflake"
+                        };
+                    }
+                    @foreach (var ikon in ikonlar)
+                    {
+                        <div class="col-3 col-md-2 mb-3">
+                            <label class="btn btn-outline-primary w-100 p-3 icon-label m-0">
+                                <input type="radio" name="IkonClass" value="@ikon" required class="d-none">
+                                <i class="fa @ikon fa-2x d-block mb-1"></i>
+                                <small style="font-size: 10px;">@ikon</small>
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">Açıklama</label>
+                <textarea name="Aciklama" class="form-control" id = "summernote" rows="4" placeholder="Hizmet detaylarını buraya yazın..."></textarea>
+            </div>
+
+
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success px-4">
+                    <i class="fa fa-save"></i> Sisteme Kaydet
+                </button>
+                <a href="/Default/IndexHizmetler" class="btn btn-secondary">
+                    <i class="fa fa-times"></i> Vazgeç
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .icon-label {
+        transition: all 0.2s;
+        border: 2px solid transparent;
+        background: white;
+    }
+
+        .icon-label:hover {
+            border-color: #1cc88a;
+        }
+
+        .icon-label input[type="radio"]:checked + i,
+        .icon-label input[type="radio"]:checked + i + small {
+            color: white;
+        }
+
+        .icon-label:has(input[type="radio"]:checked) {
+            background-color: #1cc88a !important;
+            border-color: #1cc88a !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+</style>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+          height: 100,
+        lang:'tr'
+      });
+</script>

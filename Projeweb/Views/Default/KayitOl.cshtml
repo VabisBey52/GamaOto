@@ -1,0 +1,68 @@
+﻿@model Projeweb.Models.Tbl_Uyeler
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/tema/css/bootstrap.min.css" rel="stylesheet">
+    <title>GamaOto - Yeni Üye Kaydı</title>
+    <style>
+        body {
+            background: #f4f7f6;
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .copyright-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <div class="card p-4 shadow-lg" style="width: 400px;">
+            <h3 class="text-center mb-4 text-primary">Kayıt Ol</h3>
+
+            @using (Html.BeginForm("KayitOl", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="mb-3">
+                    <label class="form-label">Ad Soyad</label>
+                    @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control", required = "required" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">E-posta</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", required = "required" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Şifre</label>
+                    @Html.PasswordFor(x => x.Sifre, new { @class = "form-control", required = "required" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Profil Resmi</label>
+                    <input type="file" name="ResimDosyasi" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Kayıt İşlemini Tamamla</button>
+                <hr />
+                <div class="text-center">
+                    <a href="/Default/GirisYap" class="small text-decoration-none">Zaten üye misiniz? Giriş Yapın</a>
+                </div>
+                <hr class="mt-4">
+                <div class="text-center mt-3 copyright-text">
+                    &copy; 2026 <strong>GamaOto Servis</strong>. <br>
+                    Tüm Hakları Saklıdır.
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
