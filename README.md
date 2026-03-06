@@ -43,12 +43,12 @@ Bu proje, fikir aşamasından yayına kadar aşağıdaki ekip tarafından kolekt
 ### 👑 Adahan Karadeniz - Kurucu & Baş Geliştirici (Full-Stack)
 <img src="https://github.com/VabisBey52.png" width="150px;" style="border-radius:50%;"/><br /><sub></sub>
 
-Proje mimarisi, veritabanı tasarımı ve backend (C#) süreçlerinin yönetimi.
+Proje mimarisi, veritabanı tasarımı ve backend (C#) süreçlerinin yönetimi...
 
 ### 🛠️ Hüseyin Yüce - Proje Asistanı & Yazılım Geliştirici
 <img src="https://github.com/huseyin6060.png" width="150px;" style="border-radius:50%;"/><br /><sub></sub>
 
-Sistem geliştirme süreçlerinde teknik destek ve modül entegrasyonları.
+Sistem geliştirme süreçlerinde teknik destek ve modül entegrasyonları...
 
 ### 🎨 Buğrahan Yılmaz - Tester & Fikir Lideri
 
