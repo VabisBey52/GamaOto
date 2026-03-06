@@ -42,8 +42,8 @@ Tünelleme,		Ngrok (Yerel testi dış dünyaya açmak için)
 <img src="https://github.com/VabisBey52.png" width="150px;" style="border-radius:50%;"/><br /><sub><b>Adahan Karadeniz</b></sub>](https://github.com/VabisBey52)
 ### 👑 Adahan Karadeniz - Kurucu & Baş Geliştirici (Full-Stack)
 
-Proje mimarisi, veritabanı tasarımı ve backend (C#) süreçlerinin yönetimi.
-<img src="https://github.com/hüseyin6060.png" width="150px;" style="border-radius:50%;"/><br /><sub><b>Hüseyin Yüce</b></sub>](https://github.com/huseyin6060)
+
+<img src="https://github.com/huseyin6060.png" width="150px;" style="border-radius:50%;"/><br /><sub><b>Hüseyin Yüce</b></sub>](https://github.com/huseyin6060)
 ### 🛠️ Hüseyin Yüce - Proje Asistanı & Yazılım Geliştirici
 
 Sistem geliştirme süreçlerinde teknik destek ve modül entegrasyonları.
